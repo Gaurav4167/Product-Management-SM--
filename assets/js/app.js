@@ -78,6 +78,13 @@ function addNewProduct(ele){
                             <td><button onClick="deleteProduct(this)" class="btn btn-danger">Delete</button></td>
                         </tr>
                         `
+                        Swal.fire({
+                                          title: "Created!",
+                                            text: "New Product created successfully",
+                                             icon: "success"
+                                     });
+
+                        
 
     form.reset()
 }
@@ -136,6 +143,12 @@ function updateProduct(ele){
     addBtn.classList.remove("d-none")
     updateBtn.classList.add("d-none")
 
+    Swal.fire({
+                                          title: "Updated!",
+                                            text: "Product is Updated",
+                                             icon: "success"
+                                     });
+
 
 }
 
@@ -143,18 +156,38 @@ function updateProduct(ele){
 function deleteProduct(ele){
     let DELETE_ID = ele.closest("tr").id
 
-    let getIndex = products.find(ele => ele.productId === DELETE_ID)
+    Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#3085d6",
+         cancelButtonColor: "#d33",
+         confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                      if (result.isConfirmed){
+                        let getIndex = products.find(ele => ele.productId === DELETE_ID)
 
-    products.splice(getIndex, 1)
-    sessionStorage.setItem("products", JSON.stringify(products))
+                        products.splice(getIndex, 1)
+                        sessionStorage.setItem("products", JSON.stringify(products))
 
-    ele.closest("tr").remove()
+                        ele.closest("tr").remove()
 
-    //Updating Table Sr Number
-    let td = document.querySelectorAll("tbody tr");
-    td.forEach((ele, i) => {
-        ele.querySelector("td").innerText = i+1
-    })
+                        //Updating Table Sr Number
+                        let td = document.querySelectorAll("tbody tr");
+                        td.forEach((ele, i) => {
+                        ele.querySelector("td").innerText = i+1
+                         })
+
+                         Swal.fire({
+                                          title: "Deleted!",
+                                            text: "Product is Deleted",
+                                             icon: "success"
+                                     });
+                      } 
+                });
+
+    
     
 }
 

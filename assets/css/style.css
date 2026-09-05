@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-litePink: pink;
+    --clr-green: green;
+    --clr-blue: blue ;
+}
+
+.bg-pink{
+    background-color: var(--bg-litePink);
+}
+.color-green{
+   color: var( --clr-green);
+}
+.color-blue{
+   color: var(--clr-blue);
+}
+
+.text-align-center{
+    text-align: center;
+}
+.all{
+    background-color: green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

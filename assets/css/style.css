@@ -20,6 +20,10 @@
    color: var(--clr-blue);
 }
 
+.color-red{
+    color: red;
+}
+
 .text-align-center{
     text-align: center;
 }
